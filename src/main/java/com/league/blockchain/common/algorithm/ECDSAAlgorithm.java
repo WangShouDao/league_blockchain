@@ -3,6 +3,8 @@ package com.league.blockchain.common.algorithm;
 import com.google.common.base.Objects;
 import com.league.blockchain.common.Constants;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.binary.StringUtils;
+import org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi;
 import org.bouncycastle.jce.ECNamedCurveTable;
 import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import org.bouncycastle.math.ec.ECPoint;
@@ -45,7 +47,81 @@ public class ECDSAAlgorithm {
             secureRandom = SecureRandom.getInstance(Constants.RANDOM_NUMBER_ALGORITHM,
                     Constants.RANDOM_NUMBER_ALGORITHM_PROVIDER);
         } catch (Exception e){
-            
+            secureRandom = new SecureRandom();
         }
+        // Generate the key, skipping as many as desired.
+        byte[] privateKeyAttempt = new byte[32];
+        secureRandom.nextBytes(privateKeyAttempt);
+        BigInteger privateKeyCheck = new BigInteger(1, privateKeyAttempt);
+        while (privateKeyCheck.compareTo(BigInteger.ZERO)==0||privateKeyCheck.compareTo(Constants.MAXPRIVATEKEY)>0){
+            secureRandom.nextBytes(privateKeyAttempt);
+            privateKeyCheck = new BigInteger(1, privateKeyAttempt);
+        }
+        String result = Base64.encodeBase64String(privateKeyAttempt);
+        result = result.replaceAll("[\\s*\t\n\r]", "");
+        return result;
+    }
+
+    public static String generatePublicKey(String privateKeyBase64String, boolean encode){
+        try{
+            byte[] privateKeyBytes = Base64.decodeBase64(privateKeyBase64String);
+            ECNamedCurveParameterSpec spec = ECNamedCurveTable.getParameterSpec("secp256k1");
+            ECPoint pointQ = spec.getG().multiply(new BigInteger(1, privateKeyBytes));
+            String result = Base64.encodeBase64String(pointQ.getEncoded(encode));
+            result = result.replaceAll("[\\s*\t\n\r]", "");
+            return result;
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 生成长公钥
+     * @param privateKeyBase64String
+     * @return
+     */
+    public static String generatePublicKey(String privateKeyBase64String){
+        return generatePublicKey(privateKeyBase64String, false);
+    }
+
+    public static String decodePublicKey(String encodePubKeyBase64String){
+        try{
+            byte[] encodePubKeyBytes = Base64.decodeBase64(encodePubKeyBase64String);
+            ECNamedCurveParameterSpec spec = ECNamedCurveTable.getParameterSpec("secp256k1");
+            ECPoint pointQ = spec.getG().getCurve().decodePoint(encodePubKeyBytes);
+            String result = Base64.encodeBase64String(pointQ.getEncoded(false));
+            result = result.replaceAll("[\\s*\t\n\r]", "");
+            return result;
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     *  测试使用私钥签名，并使用公钥验证签名
+     * @param args
+     * @throws Exception
+     */
+    public static void main(String[] args) throws Exception{
+        String priKey = generatePrivateKey();
+        System.out.println(priKey);
+        String pubKey = generatePublicKey(priKey, true);
+        String pubKey1 = generatePublicKey(priKey);
+        System.out.println(pubKey);
+        System.out.println(pubKey1);
+        String sign = sign(priKey, "abc");
+        System.out.println(sign);
+        boolean verify = verify("abc", sign, pubKey);
+        System.out.println(verify);
+    }
+
+    /**
+     *  根据公钥生成address
+     * @param publicKey
+     * @return
+     * @throws Exception
+     */
+    public static String getAddress(String publicKey) throws Exception{
+        return getAddress(publicKey.getBytes("UTF-8"), 0);
     }
 }
