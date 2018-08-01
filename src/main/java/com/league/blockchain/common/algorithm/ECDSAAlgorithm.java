@@ -1,6 +1,7 @@
 package com.league.blockchain.common.algorithm;
 
 import com.google.common.base.Objects;
+import com.league.blockchain.common.Constants;
 import org.apache.commons.codec.binary.Base64;
 import org.bouncycastle.jce.ECNamedCurveTable;
 import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
@@ -42,7 +43,9 @@ public class ECDSAAlgorithm {
         SecureRandom secureRandom;
         try {
             secureRandom = SecureRandom.getInstance(Constants.RANDOM_NUMBER_ALGORITHM,
-                    Constants)
+                    Constants.RANDOM_NUMBER_ALGORITHM_PROVIDER);
+        } catch (Exception e){
+            
         }
     }
 }
