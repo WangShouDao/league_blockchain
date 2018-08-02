@@ -145,6 +145,10 @@ public class ECDSAAlgorithm {
         return Base58Algorithm.encode(rawAddr);
     }
 
+    public static String sign(String privateKey, String data) throws UnsupportedEncodingException{
+        return sign(privateKey, data.getBytes("UTF-8"));
+    }
+
     public static String sign(String privateKey, byte[] data){
         byte[] hash256 = BaseAlgorithm.encode("SHA-256", data);
         ECDSASigner signer = new ECDSASigner(new HMacDSAKCalculator(new SHA256Digest()));
