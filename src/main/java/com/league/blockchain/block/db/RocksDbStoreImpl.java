@@ -21,7 +21,11 @@ public class RocksDbStoreImpl implements DbStore {
 
     @Override
     public void put(String key, String value) {
-
+        try{
+            rocksDB.put(key.getBytes(Const.CHARSET), value.getBytes(Const.CHARSET));
+        } catch (RocksDBException | UnsupportedEncodingException e){
+            e.printStackTrace();
+        }
     }
 
     @Override
