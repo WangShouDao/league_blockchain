@@ -46,7 +46,7 @@ public class CommonUtil {
                         if(inetAddr.isSiteLocalAddress()){
                             // 如果是site-local地址，就是它了
                             return inetAddr;
-                        }else if{
+                        }else if(candidateAddress==null){
                             // site-local类型的地址未发现，先记录候选地址
                             candidateAddress = inetAddr;
                         }

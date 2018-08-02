@@ -33,7 +33,7 @@ public class FastJsonUtil {
         return JSON.toJSONString(object, CONFIG);
     }
 
-    public static Object toBean(String next){
+    public static Object toBean(String text){
         return JSON.parse(text);
     }
 
