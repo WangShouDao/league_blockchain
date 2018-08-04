@@ -7,7 +7,7 @@ public interface PacketType {
     // 心跳包
     byte HEEART_BEAT = 0;
     // 已生成新的区块
-    byte GENERATE_COMPLETE_RWQUEST = 1;
+    byte GENERATE_COMPLETE_REQUEST = 1;
     // 已生成新的区块回应
     byte GENERATE_COMPLETE_RESPONSE = -1;
     // 请求生成block
