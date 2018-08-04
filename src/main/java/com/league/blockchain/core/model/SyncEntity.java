@@ -2,10 +2,7 @@ package com.league.blockchain.core.model;
 
 import com.league.blockchain.common.CommonUtil;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "sync")

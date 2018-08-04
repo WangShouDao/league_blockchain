@@ -1,70 +1,96 @@
 package com.league.blockchain.core.manager;
 
-import com.league.blockchain.ApplicationContextProvider;
+import cn.hutool.core.util.StrUtil;
 import com.league.blockchain.block.Block;
-import com.league.blockchain.block.check.CheckerManager;
 import com.league.blockchain.block.db.DbStore;
 import com.league.blockchain.common.Constants;
-import com.league.blockchain.core.event.AddBlockEvent;
-import com.league.blockchain.core.event.DbSyncEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.context.event.EventListener;
-import org.springframework.core.annotation.Order;
-import org.springframework.scheduling.annotation.Async;
+import com.league.blockchain.common.FastJsonUtil;
 import org.springframework.stereotype.Service;
-import org.tio.utils.json.Json;
 
 import javax.annotation.Resource;
 
-/**
- *  block的本地存储
- */
 @Service
 public class DbBlockManager {
     @Resource
     private DbStore dbStore;
-    @Resource
-    private CheckerManager checkerManager;
-    private Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Order(1)
-    @EventListener(AddBlockEvent.class)
-    public synchronized void addBlock(AddBlockEvent addBlockEvent){
-        logger.info("开始生成本地block");
-        Block block = (Block) addBlockEvent.getSource();
-        String hash = block.getHash();
-        // 如果已经存在了， 说明已经更新过该block了
-        if(dbStore.get(hash)!=null){
-            return;
+    /**
+     *  查找第一个区块
+     * @return
+     */
+    public Block getFirstBlock(){
+        String firstBlockHash = dbStore.get(Constants.KEY_FIRST_BLOCK);
+        if(StrUtil.isEmpty(firstBlockHash)){
+            return null;
         }
-        // 校验区块
-        if(checkerManager.check(block).getCode()!=0){
-            return;
-        }
-        // 如果没有上一区块, 说明该块就是创世块
-        if(block.getBlockHeader().getHashPreviousBlock()==null){
-            dbStore.put(Constants.KEY_FIRST_BLOCK, hash);
-        } else {
-            // 保存上一区块对该区块的key, value映射
-            dbStore.put(Constants.KEY_BLOCK_NEXT_PREFIX + block.getBlockHeader().getHashPreviousBlock(), hash);
-        }
-        //存入rocksDB
-        dbStore.put(hash, Json.toJson(block));
-        //设置最后一个block的key value
-        dbStore.put(Constants.KEY_LAST_BLOCK, hash);
-        logger.info("本地已生成新的Block");
-
-        // 同步到sqlite
-        sqliteSync();
+        return getBlockByHash(firstBlockHash);
     }
 
     /**
-     *  sqlite根据block信息，执行sql
+     *  获取最后一个区块信息
+     * @return
      */
-    @Async
-    public void sqliteSync(){
-        // 开始同步到sqlite
-        ApplicationContextProvider.publishEvent(new DbSyncEvent(""));
+    public Block getLastBlock(){
+        String lastBlockHash = dbStore.get(Constants.KEY_LAST_BLOCK);
+        if(StrUtil.isEmpty(lastBlockHash)){
+            return null;
+        }
+        return getBlockByHash(lastBlockHash);
+    }
+
+    /**
+     *  获取最后一个区块的hash
+     * @return
+     */
+    public String getLastBlockHash(){
+        Block block = getLastBlock();
+        if(block!=null){
+            return block.getHash();
+        }
+        return null;
+    }
+
+    /**
+     * 获取最后一个block的number
+     * @return
+     */
+    public int getLastBlockNumber(){
+        Block block = getLastBlock();
+        if(block!=null){
+            return block.getBlockHeader().getNumber();
+        }
+        return 0;
+    }
+
+    /**
+     *  获取某一个block的下一个block
+     * @param block
+     * @return
+     */
+    public Block getNextBlock(Block block){
+        if(block==null){
+            return getFirstBlock();
+        }
+        String nextHash = dbStore.get(Constants.KEY_BLOCK_NEXT_PREFIX + block.getHash());
+        if(nextHash==null){
+            return null;
+        }
+        return getBlockByHash(nextHash);
+    }
+
+    public Block getNextBlockByHash(String hash){
+        if(hash==null){
+            return getFirstBlock();
+        }
+        String nextHash = dbStore.get(Constants.KEY_BLOCK_NEXT_PREFIX + hash);
+        if(nextHash==null){
+            return null;
+        }
+        return getBlockByHash(nextHash);
+    }
+
+    public Block getBlockByHash(String hash){
+        String blockJson = dbStore.get(hash);
+        return FastJsonUtil.toBean(blockJson, Block.class);
     }
 }
