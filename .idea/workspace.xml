@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4b5bfb4-2ea1-4a32-bd99-127af009dbbc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/disruptor/DisruptorServerConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/disruptor/DisruptorServerConsumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/handler/client/FetchBlockResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/handler/client/FetchBlockResponseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/AbstractVoteMsgQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/AbstractVoteMsgQueue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/BaseMsgQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/BaseMsgQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/handler/client/TotalBlockInfoRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/handler/client/TotalBlockInfoResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/NextBlockQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/NextBlockQueue.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -24,15 +26,15 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="8" />
-          <entry key="java" value="49458" />
+          <entry key="dummy" value="14" />
+          <entry key="java" value="51557" />
           <entry key="xml" value="956" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="49458" />
-          <entry key="PLAIN_TEXT" value="8" />
+          <entry key="JAVA" value="51557" />
+          <entry key="PLAIN_TEXT" value="14" />
           <entry key="XML" value="956" />
         </counts>
       </usages-collector>
@@ -40,14 +42,14 @@
         <counts>
           <entry key="class" value="1" />
           <entry key="groovy" value="1" />
-          <entry key="java" value="203" />
+          <entry key="java" value="205" />
           <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="203" />
+          <entry key="JAVA" value="205" />
           <entry key="Scratch" value="1" />
           <entry key="XML" value="3" />
         </counts>
@@ -87,39 +89,16 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/disruptor/DisruptorServerConsumer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="95">
-              <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/handler/client/FetchBlockResponseHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#499#500#0" expanded="true" />
-                <element signature="e#533#534#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/NextBlockQueue.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+              <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/CommitMsgQueue.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/handler/client/NextBlockResponseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="38" column="75" selection-start-line="38" selection-start-column="75" selection-end-line="38" selection-end-column="75" />
+            <state relative-caret-position="152">
+              <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -177,8 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/core/repository/SyncRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/core/manager/SyncManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/core/manager/PermissionManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/core/manager/MessageManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/core/manager/DbBlockGenerator.java" />
@@ -219,23 +196,25 @@
         <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/packet/PacketType.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/distruptor/DisruptorServerHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/disruptor/DisruptorServerHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/disruptor/DisruptorServerConsumer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/client/ClientStarter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/BaseMsgQueue.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/AbstractVoteMsgQueue.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/handler/client/TotalBlockInfoRequestHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/handler/client/FetchBlockResponseHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/PrepareMsgQueue.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/PreMsgQueue.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/CommitMsgQueue.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/NextBlockQueue.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/handler/client/FetchBlockResponseHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/disruptor/DisruptorServerConsumer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/handler/client/NextBlockResponseHandler.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="522" />
-    <option name="y" value="193" />
+    <option name="x" value="29" />
+    <option name="y" value="538" />
     <option name="width" value="1283" />
-    <option name="height" value="475" />
+    <option name="height" value="396" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -358,6 +337,17 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="blockchain" type="462c0819:PsiDirectoryNode" />
               <item name="socket" type="462c0819:PsiDirectoryNode" />
+              <item name="handler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="league_blockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="league_blockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="blockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="socket" type="462c0819:PsiDirectoryNode" />
+              <item name="handler" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -434,7 +424,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533387636607" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533392744582" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../jars/spring-framework-4.0.6.RELEASE-dist.zip!/spring-framework-4.0.6.RELEASE/libs" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -467,7 +457,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="695" y="138" width="1283" height="475" extended-state="0" />
+    <frame x="29" y="538" width="1283" height="396" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
@@ -502,43 +492,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/core/requestbody/InstructionBody.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding>
-            <element signature="e#978#979#0" expanded="true" />
-            <element signature="e#1010#1011#0" expanded="true" />
-            <element signature="e#1058#1059#0" expanded="true" />
-            <element signature="e#1100#1101#0" expanded="true" />
-            <element signature="e#1132#1133#0" expanded="true" />
-            <element signature="e#1160#1161#0" expanded="true" />
-            <element signature="e#1202#1203#0" expanded="true" />
-            <element signature="e#1236#1237#0" expanded="true" />
-            <element signature="e#1267#1268#0" expanded="true" />
-            <element signature="e#1294#1295#0" expanded="true" />
-            <element signature="e#1334#1335#0" expanded="true" />
-            <element signature="e#1366#1367#0" expanded="true" />
-            <element signature="e#1400#1401#0" expanded="true" />
-            <element signature="e#1430#1431#0" expanded="true" />
-            <element signature="e#1476#1477#0" expanded="true" />
-            <element signature="e#1514#1515#0" expanded="true" />
-            <element signature="e#1554#1555#0" expanded="true" />
-            <element signature="e#1590#1591#0" expanded="true" />
-            <element signature="e#1648#1649#0" expanded="true" />
-            <element signature="e#1698#1699#0" expanded="true" />
-            <element signature="e#1735#1736#0" expanded="true" />
-            <element signature="e#1768#1769#0" expanded="true" />
-            <element signature="e#1820#1821#0" expanded="true" />
-            <element signature="e#1864#1865#0" expanded="true" />
-            <element signature="e#1900#1901#0" expanded="true" />
-            <element signature="e#1932#1933#0" expanded="true" />
-            <element signature="e#1982#1983#0" expanded="true" />
-            <element signature="e#2024#2025#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/core/resthttp/RestTemplateConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -908,13 +861,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/disruptor/DisruptorServerConsumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/client/ClientStarter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3539">
@@ -938,7 +884,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/handler/client/TotalBlockInfoRequestHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/handler/client/TotalBlockInfoResponseHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="532">
           <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
@@ -950,18 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/handler/client/FetchBlockResponseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
-            <element signature="e#533#534#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/PrepareMsgQueue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -969,13 +903,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/NextBlockQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -1018,8 +945,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/CommitMsgQueue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="38" column="75" selection-start-line="38" selection-start-column="75" selection-end-line="38" selection-end-column="75" />
+        <state relative-caret-position="912">
+          <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/pbft/queue/NextBlockQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1164">
+          <caret line="45" column="10" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/handler/client/FetchBlockResponseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#533#534#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/disruptor/DisruptorServerConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/league/blockchain/socket/handler/client/NextBlockResponseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

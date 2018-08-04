@@ -11,8 +11,8 @@ import org.tio.utils.json.Json;
 /**
  *  获取全部区块信息的请求，全网广播
  */
-public class TotalBlockInfoRequestHandler extends AbstractBlockHandler<RpcBlockBody> {
-    private Logger logger = LoggerFactory.getLogger(TotalBlockInfoRequestHandler.class);
+public class TotalBlockInfoResponseHandler extends AbstractBlockHandler<RpcBlockBody> {
+    private Logger logger = LoggerFactory.getLogger(TotalBlockInfoResponseHandler.class);
 
     @Override
     public Class<RpcBlockBody> bodyClass(){
