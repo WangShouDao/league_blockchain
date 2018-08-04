@@ -3,7 +3,7 @@ package com.league.blockchain.socket.body;
 /**
  *  请求next block时用的包装类
  */
-public class RpcNextBlockBody {
+public class RpcNextBlockBody extends BaseBody {
     /**
      * blockHash
      */
