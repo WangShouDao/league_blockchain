@@ -4,8 +4,6 @@ import com.league.blockchain.socket.base.AbstractBlockHandler;
 import com.league.blockchain.socket.disruptor.base.BaseEvent;
 import com.league.blockchain.socket.disruptor.base.MessageConsumer;
 import com.league.blockchain.socket.handler.server.*;
-import com.league.blockchain.socket.handler.client.FetchBlockResponseHandler;
-import com.league.blockchain.socket.handler.client.TotalBlockInfoResponseHandler;
 import com.league.blockchain.socket.packet.BlockPacket;
 import com.league.blockchain.socket.packet.PacketType;
 import org.springframework.stereotype.Component;

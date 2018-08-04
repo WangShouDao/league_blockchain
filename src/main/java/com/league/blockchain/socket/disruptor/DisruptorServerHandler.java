@@ -12,7 +12,7 @@ public class DisruptorServerHandler implements EventHandler<BaseEvent> {
     @Override
     public void onEvent(BaseEvent baseEvent, long sequence, boolean endOfBatch) throws Exception{
         try{
-            ApplicationContextProvider.getBean(DisruptorClientConsumer.class).receive(baseEvent);
+            ApplicationContextProvider.getBean(DisruptorServerConsumer.class).receive(baseEvent);
         } catch (Exception e){
             logger.error("Disruptor事件执行异常", e);
         }

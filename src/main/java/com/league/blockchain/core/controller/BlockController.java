@@ -1,31 +1,53 @@
 package com.league.blockchain.core.controller;
 
-import com.league.blockchain.socket.client.BlockClientAioHandler;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.tio.client.ClientGroupContext;
-import org.tio.client.ReconnConf;
-import org.tio.client.intf.ClientAioHandler;
-import org.tio.client.intf.ClientAioListener;
+import com.league.blockchain.block.check.BlockChecker;
+import com.league.blockchain.common.exception.TrustSDKException;
+import com.league.blockchain.core.bean.BaseData;
+import com.league.blockchain.core.bean.ResultGenerator;
+import com.league.blockchain.core.manager.DbBlockManager;
+import com.league.blockchain.core.manager.MessageManager;
+import com.league.blockchain.core.manager.SyncManager;
+import com.league.blockchain.core.requestbody.BlockRequestBody;
+import com.league.blockchain.core.service.BlockService;
+import com.league.blockchain.core.service.InstructionService;
+import com.league.blockchain.socket.client.PacketSender;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-/**
- *  配置ClientGroupContext
- */
-@Configuration
+import javax.annotation.Resource;
+
+@RestController
+@RequestMapping("/block")
 public class BlockController {
-    /**
-     * 构建客户端连接的context
-     */
-    @Bean
-    public ClientGroupContext clientGroupContext(){
-        // handler, 包括编码、解码、消息处理
-        ClientAioHandler clientAioHandler = new BlockClientAioHandler();
-        // 事件监听器, 可以为null, 但建议自己实现该接口
-        ClientAioListener clientAioListener = new BlockClientAioHandler();
-        ReconnConf reconnConf = new ReconnConf(5000L, 20);
-        ClientGroupContext clientGroupContext = new ClientGroupContext(clientAioHandler, clientAioListener, reconnConf);
+    @Resource
+    private BlockService blockService;
+    @Resource
+    private PacketSender packetSender;
+    @Resource
+    private DbBlockManager dbBlockManager;
+    @Resource
+    private InstructionService instructionService;
+    @Resource
+    private SyncManager syncManager;
+    @Resource
+    private MessageManager messageManager;
+    @Resource
+    private BlockChecker blockChecker;
 
-        // clientGroupContext.setHeartbeatTimeout(Const.TIMEOUT);
-        return clientGroupContext;
+    /**
+     *  添加一个block，需要先在InstructionController构建1-N个instruction指令，然后调用该接口生成Block
+     * @param blockRequestBody
+     * @return 结果
+     * @throws TrustSDKException
+     */
+    @PostMapping
+    public BaseData add(@RequestBody BlockRequestBody blockRequestBody) throws TrustSDKException{
+        String msg = blockService.check(blockRequestBody);
+        if(msg!=null){
+            return ResultGenerator.genFailResult(msg);
+        }
+        return ResultGenerator.genSuccessResult(blockService.addBlock(blockRequestBody));
     }
 }

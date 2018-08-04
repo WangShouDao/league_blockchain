@@ -1,4 +1,27 @@
 package com.league.blockchain.socket.handler.server;
 
-public class HeartBeatHandler {
+import com.league.blockchain.socket.base.AbstractBlockHandler;
+import com.league.blockchain.socket.body.HeartBeatBody;
+import com.league.blockchain.socket.packet.BlockPacket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.tio.core.ChannelContext;
+
+/**
+ *  客户端心跳包
+ */
+@Deprecated
+public class HeartBeatHandler extends AbstractBlockHandler<HeartBeatBody> {
+    private Logger logger = LoggerFactory.getLogger(HeartBeatHandler.class);
+
+    @Override
+    public Class<HeartBeatBody> bodyClass(){
+        return HeartBeatBody.class;
+    }
+
+    @Override
+    public Object handler(BlockPacket packet, HeartBeatBody heartBeatBody, ChannelContext channelContext) throws Exception{
+        logger.info("收到<心跳包>消息", heartBeatBody.getText());
+        return null;
+    }
 }
